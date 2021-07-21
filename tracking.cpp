@@ -10,8 +10,17 @@
 #include <sstream>
 #include <opencv2/highgui/highgui.hpp>
 #include <opencv2/opencv.hpp>
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <iostream>
+#include <stdlib.h>
+#include <sys/time.h>
 
+using namespace std;
 
+char serialPortFilename[] = "/dev/ttyACM0";
+string arduino;
 
 using namespace cv;
 using namespace std;
@@ -130,6 +139,7 @@ void trackFilteredObject(int &x, int &y, Mat threshold, Mat &cameraFeed) {
 	double refArea2 = 0;
 	bool objectFound1 = false;
 	bool objectFound2 = false;
+	arduino="0,0,0";
 
 
 	if (hierarchy.size() > 0) {
@@ -157,6 +167,8 @@ void trackFilteredObject(int &x, int &y, Mat threshold, Mat &cameraFeed) {
 
 			//jika object di temukan menggambar garis tengah
 			if (objectFound1 == true) {
+				
+				arduino="1,"+intToString(value_x)+","+intToString(value_y);
 				//center calculation
 				if(y > center_y) value_y = ((y-center_y)*-1)/2;
 				else value_y = (center_y-y) /2;
@@ -245,6 +257,11 @@ void trackFilteredObject(int &x, int &y, Mat threshold, Mat &cameraFeed) {
 
 int main(int argc, char* argv[])
 {
+	struct timeval tv;
+   long s_prev = tv.tv_sec; 
+   long s_prev_close  = tv.tv_sec; 
+   FILE *serPort;
+	
 	//some boolean variables for different functionality within this
 	//program
 	bool trackObjects = true;
@@ -300,6 +317,33 @@ int main(int argc, char* argv[])
 		//delay 30ms so that screen can refresh.
 		//image will not appear without this waitKey() command
 		waitKey(30);
+
+		gettimeofday(&tv,NULL);
+      long s = tv.tv_sec; 
+      
+      if( s %2==0 && s != s_prev ){
+         s_prev = s;
+
+         serPort = fopen(serialPortFilename, "w");
+         if (serPort == NULL)
+         {
+            printf("ERROR");	
+            return 0;
+         }
+         // string arduino="2,90,11";
+
+         for(int i = 0; i<arduino.length();i++){
+            char send =arduino[i];
+            fwrite(&send, sizeof(send),1, serPort);
+         }
+         cout<<"send"<<endl;
+      }
+      if(s == s_prev+1 &&  s_prev_close != s){
+         s_prev_close = s;
+
+         fclose(serPort);
+         cout<<"close"<<endl; 
+      }
 	}
 
 
