@@ -321,29 +321,29 @@ int main(int argc, char* argv[])
 		gettimeofday(&tv,NULL);
       long s = tv.tv_sec; 
       
-      if( s %2==0 && s != s_prev ){
-         s_prev = s;
+		if( s %2==0 && s != s_prev ){
+			s_prev = s;
 
-         serPort = fopen(serialPortFilename, "w");
-         if (serPort == NULL)
-         {
-            printf("ERROR");	
-            return 0;
-         }
-         // string arduino="2,90,11";
+				serPort = fopen(serialPortFilename, "w");
+			if (serPort == NULL)
+			{
+				printf("ERROR");	
+				return 0;
+			}
+			// string arduino="2,90,11";
 
-         for(int i = 0; i<arduino.length();i++){
-            char send =arduino[i];
-            fwrite(&send, sizeof(send),1, serPort);
-         }
-         cout<<"send"<<endl;
-      }
-      if(s == s_prev+1 &&  s_prev_close != s){
-         s_prev_close = s;
+			for(int i = 0; i<arduino.length();i++){
+				char send =arduino[i];
+				fwrite(&send, sizeof(send),1, serPort);
+			}
+			cout<<"send"<<endl;
+		}
+		if(s == s_prev+1 &&  s_prev_close != s){
+			s_prev_close = s;
 
-         fclose(serPort);
-         cout<<"close"<<endl; 
-      }
+			fclose(serPort);
+			cout<<"close"<<endl; 
+		}
 	}
 
 
