@@ -319,7 +319,7 @@ int main(int argc, char* argv[])
 		waitKey(30);
 
 		gettimeofday(&tv,NULL);
-      long s = tv.tv_sec; 
+		long s = tv.tv_sec; 
       
 		if( s %2==0 && s != s_prev ){
 			s_prev = s;
