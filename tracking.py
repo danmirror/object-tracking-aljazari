@@ -23,16 +23,17 @@ cv2.namedWindow('image',cv2.WINDOW_NORMAL)
 
 ilowH = 0
 ilowS =149
-ilowV = 0
+ilowV = 35
 ihighH = 255
 ihighS = 255
-ihighV = 255
+ihighV = 168
 
 frame_w = 440
 frame_h = 280
 
 min_obj = 10*300
 max_obj = frame_w*frame_h/1.5
+limit_ = 12
 
 #===================set variable ===================
 count = 0
@@ -102,16 +103,18 @@ while True:
                 cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0), 2)
 
                 if(y > (height_/2)):
-                    value_y = ((y-(height_/2))*-1)/4
+                    value_y = ((y-(height_/2))*-1)/5
                 else:
-                    value_y = ((height_/2)-y) /4
+                    value_y = ((height_/2)-y) /5
 				
                 if(x > (width_/2)):
-                    value_x = (x-(width_/2))/4
+                    value_x = (x-(width_/2))/5
                 else:
-                    value_x = (((width_/2)-x)*-1) /4
-                
-                cv2.putText(frame,str(value_x)+","+str(value_y),(x, y - 20), cv2.FONT_HERSHEY_COMPLEX, 1 ,(0,0,255), 2)
+                    value_x = (((width_/2)-x)*-1) /5
+                value_x = value_x + limit_
+                value_y = value_y + limit_
+
+                cv2.putText(frame,str(round(value_x, 2))+","+str(round(value_y, 2)),(x, y - 20), cv2.FONT_HERSHEY_COMPLEX, 1 ,(0,0,255), 2)
 
                 if (count>=1):
                     data ="1"+","+str(value_x)+","+str(value_y)
