@@ -1,11 +1,13 @@
-//----------------------------------
-//  author = Danu andrean
-//  create = july 2021
-//  title  = object tracking | KRSRI
+/*-----------------------------------------------
+ *   	title           = object tracking | KRSRI
+ *   	create          = july 2021
+ *   	author          = Danu andrean
+ *  	mainternance    = yusuf prasetyo
+ */
 
-//-----------------------------------
-//
-//-----------------------------------
+//-----------------------------------------------
+
+
 
 #include <sstream>
 #include <opencv2/highgui/highgui.hpp>

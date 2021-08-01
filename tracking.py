@@ -1,10 +1,11 @@
 #--------------------------
-#   author = Danu andrean
-#   create = mey,19
-#   title  = object tracking
+#   title           = object tracking | KRSRI
+#   create          = agustus 2021
+#   author          = Danu andrean
+#   mainternance    = yusuf prasetyo
 
 #---------------------------------------
-#   done
+#   main program 2021
 #
 #-----------------------------------
 
