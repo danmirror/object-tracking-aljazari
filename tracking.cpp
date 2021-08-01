@@ -2,7 +2,7 @@
  *   	title           = object tracking | KRSRI
  *   	create          = july 2021
  *   	author          = Danu andrean
- *  	mainternance    = yusuf prasetyo
+ *  	maintenance    = yusuf prasetyo
  */
 
 //-----------------------------------------------

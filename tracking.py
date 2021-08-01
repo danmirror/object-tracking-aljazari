@@ -2,7 +2,7 @@
 #   title           = object tracking | KRSRI
 #   create          = agustus 2021
 #   author          = Danu andrean
-#   mainternance    = yusuf prasetyo
+#   maintenance    = yusuf prasetyo
 
 #---------------------------------------
 #   main program 2021
