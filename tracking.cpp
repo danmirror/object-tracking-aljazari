@@ -1,8 +1,8 @@
 /*-----------------------------------------------
- *   	title           = object tracking | KRSRI
- *   	create          = july 2021
- *   	author          = Danu andrean
- *  	maintenance    = yusuf prasetyo
+ *   	title          = object tracking | KRSRI
+ *   	create         = july 2021
+ *   	author         = Danu andrean
+ *  	maintenance		= yusuf prasetyo
  */
 
 //-----------------------------------------------
