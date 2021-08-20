@@ -58,7 +58,7 @@ kernelClose=np.ones((20,20))
 while True:
     ser = serial.Serial('/dev/ttyACM0', 9600)
     ret, frame=cap.read()
-    frame = cv2.flip(frame,1)
+    # frame = cv2.flip(frame,1)
 
     (height_, width_) = frame.shape[:2] #w:frame-width and h:frame-height
     cv2.circle(frame, (width_//2, height_//2), 7, (255, 255, 255), -1) 
@@ -118,7 +118,7 @@ while True:
                 cv2.putText(frame,str(round(value_x, 2))+","+str(round(value_y, 2)),(x, y - 20), cv2.FONT_HERSHEY_COMPLEX, 1 ,(0,0,255), 2)
 
                 if (count>=1):
-                    data ="1"+","+str(value_x)+","+str(value_y)
+                    data ="*,1"+","+str(value_x)+","+str(value_y)+",#"
                     cv2.putText(frame,'Object Found',(50,50), cv2.FONT_HERSHEY_COMPLEX, 2 ,(0,255,0), 2)        
         else:
             count =0
